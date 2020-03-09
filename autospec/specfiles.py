@@ -1838,7 +1838,10 @@ class Specfile(object):
         self.write_build_prepend()
         self.write_proxy_exports()
         self._write_strip("phpize")
-        self._write_strip("%configure")
+        self._write_strip("%configure {0} {1} {2} "
+                          .format(self.disable_static,
+                                  config.extra_configure,
+                                  config.extra_configure_avx512))
         self.write_make_line()
         self.write_build_append()
         self._write_strip("\n")
