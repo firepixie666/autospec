@@ -50,6 +50,7 @@ def do_curl(url, dest=None, post=None, is_fatal=False):
     c.setopt(c.LOW_SPEED_TIME, 10)
     buf = BytesIO()
     c.setopt(c.WRITEDATA, buf)
+    c.setopt(c.USERAGENT, "curl")
     try:
         c.perform()
     except pycurl.error as e:
